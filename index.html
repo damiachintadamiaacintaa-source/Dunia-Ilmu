@@ -1,0 +1,586 @@
+
+<!DOCTYPE html>
+
+<html lang="ms">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dunia Ilmu</title>
+
+    <style>
+
+        * {
+
+            box-sizing: border-box;
+
+        }
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background-color: #eef4ff;
+
+            color: #263858;
+
+        }
+
+        header {
+
+            background-color: #285bb5;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 30px 15px;
+
+        }
+
+        header h1 {
+
+            font-size: 32px;
+
+            margin: 0 0 12px;
+
+        }
+
+        header p {
+
+            margin: 8px 0;
+
+        }
+
+        nav {
+
+            background-color: #19448d;
+
+            padding: 14px 5px;
+
+            text-align: center;
+
+        }
+
+        nav a {
+
+            color: white;
+
+            text-decoration: none;
+
+            margin: 8px;
+
+            display: inline-block;
+
+            font-size: 14px;
+
+        }
+
+        nav a:hover {
+
+            text-decoration: underline;
+
+        }
+
+        main {
+
+            max-width: 850px;
+
+            margin: auto;
+
+            padding: 20px 15px;
+
+        }
+
+        h2 {
+
+            color: #285bb5;
+
+        }
+
+        .pengenalan {
+
+            text-align: center;
+
+            margin-bottom: 28px;
+
+        }
+
+        .carian {
+
+            display: flex;
+
+            gap: 8px;
+
+            margin: 15px 0;
+
+        }
+
+        input {
+
+            flex: 1;
+
+            min-width: 0;
+
+            padding: 12px;
+
+            border: 1px solid #bdcce3;
+
+            border-radius: 8px;
+
+            font-size: 15px;
+
+        }
+
+        button {
+
+            background-color: #285bb5;
+
+            color: white;
+
+            border: none;
+
+            padding: 12px 16px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+        }
+
+        button:hover {
+
+            background-color: #19448d;
+
+        }
+
+        #mesej {
+
+            font-size: 14px;
+
+        }
+
+        #hasil {
+
+            display: grid;
+
+            grid-template-columns:
+
+                repeat(auto-fit, minmax(220px, 1fr));
+
+            gap: 15px;
+
+        }
+
+        .kad {
+
+            background-color: white;
+
+            border: 1px solid #dce6f5;
+
+            border-radius: 12px;
+
+            padding: 18px;
+
+            box-shadow: 0 3px 8px #00000008;
+
+        }
+
+        .kad h3 {
+
+            color: #285bb5;
+
+            margin-top: 0;
+
+        }
+
+        .kategori {
+
+            color: #627da5;
+
+            font-size: 13px;
+
+        }
+
+        .tips {
+
+            background-color: #dceaff;
+
+            padding: 20px;
+
+            border-radius: 12px;
+
+            margin-top: 28px;
+
+            text-align: center;
+
+        }
+
+        footer {
+
+            background-color: #19448d;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 18px;
+
+            margin-top: 30px;
+
+        }
+
+        footer p {
+
+            margin: 6px;
+
+        }
+
+        @media (max-width: 450px) {
+
+            .carian {
+
+                flex-direction: column;
+
+            }
+
+            header h1 {
+
+                font-size: 28px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <header id="utama">
+
+        <h1>📚 Dunia Ilmu</h1>
+
+        <p>Portal Maklumat Pendidikan</p>
+
+        <p>Meneroka Ilmu, Membina Masa Depan</p>
+
+    </header>
+
+    <nav>
+
+        <a href="#utama">Utama</a>
+
+        <a href="#pelajaran">Mata Pelajaran</a>
+
+        <a href="#tips">Tips Belajar</a>
+
+    </nav>
+
+    <main>
+
+        <section class="pengenalan">
+
+            <h2>Selamat Datang ke Dunia Ilmu!</h2>
+
+            <p>
+
+                Temui pelbagai maklumat pendidikan
+
+                untuk membantu pembelajaran anda.
+
+            </p>
+
+        </section>
+
+        <section id="pelajaran">
+
+            <h2>📖 Maklumat Mata Pelajaran</h2>
+
+            <p>
+
+                Masukkan kata kunci untuk mencari
+
+                maklumat yang anda perlukan.
+
+            </p>
+
+            <div class="carian">
+
+                <input
+
+                    type="text"
+
+                    id="kataKunci"
+
+                    placeholder="Contoh: Matematik, Sains, ASK"
+
+                    aria-label="Kata kunci carian"
+
+                >
+
+                <button onclick="cariMaklumat()">Cari</button>
+
+            </div>
+
+            <p id="mesej" aria-live="polite"></p>
+
+            <div id="hasil"></div>
+
+        </section>
+
+        <section class="tips" id="tips">
+
+            <h2>💡 Tips Belajar</h2>
+
+            <p id="teksTips">
+
+                Buat ulang kaji setiap hari!
+
+            </p>
+
+            <button onclick="tukarTips()">
+
+                Tips Seterusnya
+
+            </button>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <p>Dunia Ilmu | Projek ASK Tingkatan 1</p>
+
+        <p>Belajar • Faham • Berjaya</p>
+
+    </footer>
+
+    <script>
+
+        const maklumat = [
+
+            {
+
+                kategori: "Matematik",
+
+                tajuk: "Nombor Bulat",
+
+                isi: "Nombor bulat tidak mempunyai bahagian pecahan atau perpuluhan."
+
+            },
+
+            {
+
+                kategori: "Matematik",
+
+                tajuk: "Operasi Asas",
+
+                isi: "Operasi asas terdiri daripada tambah, tolak, darab dan bahagi."
+
+            },
+
+            {
+
+                kategori: "Sains",
+
+                tajuk: "Sel",
+
+                isi: "Sel ialah unit asas struktur dan fungsi organisma hidup."
+
+            },
+
+            {
+
+                kategori: "Sains",
+
+                tajuk: "Jirim",
+
+                isi: "Jirim mempunyai jisim dan memenuhi ruang."
+
+            },
+
+            {
+
+                kategori: "Bahasa Melayu",
+
+                tajuk: "Kata Nama",
+
+                isi: "Kata nama merujuk kepada orang, tempat, benda atau perkara."
+
+            },
+
+            {
+
+                kategori: "Bahasa Inggeris",
+
+                tajuk: "Grammar",
+
+                isi: "Grammar membantu kita membina ayat yang betul dalam Bahasa Inggeris."
+
+            },
+
+            {
+
+                kategori: "Sejarah",
+
+                tajuk: "Sumber Sejarah",
+
+                isi: "Sumber sejarah digunakan untuk mengkaji peristiwa masa lampau."
+
+            },
+
+            {
+
+                kategori: "ASK",
+
+                tajuk: "Algoritma",
+
+                isi: "Algoritma ialah langkah tersusun untuk menyelesaikan masalah."
+
+            },
+
+            {
+
+                kategori: "ASK",
+
+                tajuk: "Pseudokod",
+
+                isi: "Pseudokod menerangkan langkah penyelesaian masalah menggunakan arahan ringkas."
+
+            }
+
+        ];
+
+        function paparkan(senarai) {
+
+            const hasil = document.getElementById("hasil");
+
+            const mesej = document.getElementById("mesej");
+
+            hasil.replaceChildren();
+
+            if (senarai.length === 0) {
+
+                mesej.textContent =
+
+                    "Maklumat tidak dijumpai. Sila cuba kata kunci lain.";
+
+                return;
+
+            }
+
+            mesej.textContent =
+
+                "Jumlah maklumat dijumpai: " + senarai.length;
+
+            senarai.forEach(function(item) {
+
+                const kad = document.createElement("article");
+
+                kad.className = "kad";
+
+                const tajuk = document.createElement("h3");
+
+                tajuk.textContent = "📘 " + item.tajuk;
+
+                const kategori = document.createElement("p");
+
+                kategori.className = "kategori";
+
+                kategori.textContent = item.kategori;
+
+                const isi = document.createElement("p");
+
+                isi.textContent = item.isi;
+
+                kad.append(tajuk, kategori, isi);
+
+                hasil.appendChild(kad);
+
+            });
+
+        }
+
+        function cariMaklumat() {
+
+            const kata = document
+
+                .getElementById("kataKunci")
+
+                .value.trim().toLowerCase();
+
+            const padanan = maklumat.filter(function(item) {
+
+                const teks =
+
+                    item.kategori + " " +
+
+                    item.tajuk + " " +
+
+                    item.isi;
+
+                return teks.toLowerCase().includes(kata);
+
+            });
+
+            paparkan(padanan);
+
+        }
+
+        document.getElementById("kataKunci")
+
+            .addEventListener("keydown", function(event) {
+
+                if (event.key === "Enter") {
+
+                    cariMaklumat();
+
+                }
+
+            });
+
+        const senaraiTips = [
+
+            "Buat ulang kaji setiap hari!",
+
+            "Sediakan nota ringkas bagi setiap topik.",
+
+            "Buat latihan selepas mempelajari sesuatu topik.",
+
+            "Susun jadual belajar dengan teratur.",
+
+            "Bertanya kepada guru jika tidak memahami pelajaran."
+
+        ];
+
+        let nomborTips = 0;
+
+        function tukarTips() {
+
+            nomborTips =
+
+                (nomborTips + 1) % senaraiTips.length;
+
+            document.getElementById("teksTips").textContent =
+
+                senaraiTips[nomborTips];
+
+        }
+
+        paparkan(maklumat);
+
+    </script>
+
+</body>
+
+</html>
